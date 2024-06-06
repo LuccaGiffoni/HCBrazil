@@ -1,6 +1,4 @@
-﻿using HCBrazil.Core.Enums;
-
-namespace HCBrazil.Core.Models;
+﻿namespace HCBrazil.Core.Models;
 
 public class Volunteer
 {

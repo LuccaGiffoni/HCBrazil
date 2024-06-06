@@ -1,4 +1,6 @@
-﻿namespace HCBrazil.Core;
+﻿using Microsoft.VisualBasic;
+
+namespace HCBrazil.Core;
 
 public static class Settings
 {
@@ -6,4 +8,7 @@ public static class Settings
     public const int DefaultPageSize = 15;
     public const int DefaultStatusCode = 200;
     public const int DefaultCurrentPage = 1;
+
+    public static string BackendUrl { get; set; } = string.Empty;
+    public static string FrontendUrl { get; set; } = string.Empty;
 }

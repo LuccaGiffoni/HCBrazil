@@ -8,7 +8,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Attendee> Attendees { get; set; }
     public DbSet<Volunteer> Volunteers { get; set; }
     public DbSet<Event> Events { get; set; }
-    public DbSet<Guardian> Guardians { get; set; }
+    public DbSet<Organization> Organizations { get; set; }
     public DbSet<EventAttendees> EventAttendees { get; set; }
     public DbSet<EventOrganizations> EventOrganizations { get; set; }
     public DbSet<EventVolunteers> EventVolunteers { get; set; }
@@ -23,10 +23,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         
         modelBuilder.Entity<EventOrganizations>()
             .HasKey(eo => new { eo.EventId, eo.OrganizationId });
-        
+
         modelBuilder.Entity<Attendee>()
-            .HasOne(a => a.Guardian)
+            .HasOne(a => a.Organization)
             .WithMany()
-            .HasForeignKey(a => a.GuardianId);
+            .HasForeignKey(a => a.OrganizationId);
     }
 }

@@ -1,10 +1,10 @@
-﻿using HCBrazil.Core.Requests.Guardians;
-
-namespace HCBrazil.Core.Requests.Attendees;
+﻿namespace HCBrazil.Core.Requests.Attendees;
 
 public class UpdateAttendeeRequest
 {
     public Guid Id { get; set; }
+    public Guid OrganizationId { get; set; }
+    
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string Phone { get; set; } = null!;
@@ -18,5 +18,18 @@ public class UpdateAttendeeRequest
     public string Region { get; set; } = null!;
     public int PostalCode { get; set; }
     public int Number { get; set; }
-    public GuardianRequest Guardian { get; set; } = null!;
+
+    public string GuardianFirstName { get; set; } = null!;
+    public string GuardianLastName { get; set; } = null!;
+    public string GuardianPhone { get; set; } = null!;
+    public string GuardianEmail { get; set; } = null!;
+    public string? GuardianRG { get; set; }
+    public string GuardianCPF { get; set; } = null!;
+    public string GuardianCountry { get; set; } = null!;
+    public string GuardianState { get; set; } = null!;
+    public string GuardianCity { get; set; } = null!;
+    public string GuardianStreet { get; set; } = null!;
+    public string GuardianRegion { get; set; } = null!;
+    public int GuardianPostalCode { get; set; }
+    public int GuardianNumber { get; set; }
 }

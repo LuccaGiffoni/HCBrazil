@@ -44,8 +44,54 @@ namespace HCBrazil.Api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("GuardianId")
-                        .HasColumnType("char(36)");
+                    b.Property<string>("GuardianCPF")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianCity")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianCountry")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianEmail")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianFirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianLastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("GuardianNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GuardianPhone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("GuardianPostalCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GuardianRG")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianRegion")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianState")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuardianStreet")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Instagram")
                         .HasColumnType("longtext");
@@ -56,6 +102,9 @@ namespace HCBrazil.Api.Migrations
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -81,7 +130,7 @@ namespace HCBrazil.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GuardianId");
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Attendees");
                 });
@@ -162,66 +211,6 @@ namespace HCBrazil.Api.Migrations
                     b.ToTable("EventVolunteers");
                 });
 
-            modelBuilder.Entity("HCBrazil.Core.Models.Guardian", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RG")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Region")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Guardians");
-                });
-
             modelBuilder.Entity("HCBrazil.Core.Models.Organization", b =>
                 {
                     b.Property<Guid>("Id")
@@ -287,7 +276,7 @@ namespace HCBrazil.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organization");
+                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("HCBrazil.Core.Models.Volunteer", b =>
@@ -354,11 +343,13 @@ namespace HCBrazil.Api.Migrations
 
             modelBuilder.Entity("HCBrazil.Core.Models.Attendee", b =>
                 {
-                    b.HasOne("HCBrazil.Core.Models.Guardian", "Guardian")
+                    b.HasOne("HCBrazil.Core.Models.Organization", "Organization")
                         .WithMany()
-                        .HasForeignKey("GuardianId");
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Guardian");
+                    b.Navigation("Organization");
                 });
 
             modelBuilder.Entity("HCBrazil.Core.Models.EventAttendees", b =>

@@ -14,7 +14,6 @@ public class PagedResponse<TData> : Response<TData>
     public PagedResponse(TData? data, int totalCount,
         int currentPage = Settings.DefaultCurrentPage, int pageSize = Settings.DefaultPageSize) : base(data)
     {
-        Data = data;
         TotalCount = totalCount;
         PageSize = pageSize;
         CurrentPage = currentPage;

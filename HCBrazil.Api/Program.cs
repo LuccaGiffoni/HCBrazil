@@ -1,26 +1,18 @@
-using HCBrazil.Api.Data;
-using Microsoft.EntityFrameworkCore;
+using HCBrazil.Api.Common.Api;
+using HCBrazil.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.AddSettings();
+builder.AddDataContext();
+builder.AddCrossOrigin();
+builder.AddDocumentation();
+builder.AddServices();
 
 var app = builder.Build();
+if(app.Environment.IsDevelopment())
+    app.ConfigureDevEnv();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
+app.UseCors(ApiSettings.CorsPolicyName);
+app.MapEndpoints();
 
 app.Run();
