@@ -1,8 +1,13 @@
-﻿using HCBrazil.Api.Data;
+﻿using System.Text;
+using HCBrazil.Api.Data;
 using HCBrazil.Api.Services;
 using HCBrazil.Core;
+using HCBrazil.Core.Models;
 using HCBrazil.Core.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HCBrazil.Api.Common.Api;
 

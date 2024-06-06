@@ -1,7 +1,12 @@
 using HCBrazil.Api.Common.Api;
 using HCBrazil.Api.Endpoints;
+using HCBrazil.Api.Data;
+using Microsoft.EntityFrameworkCore;
+using HCBrazil.Core.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
 builder.AddSettings();
 builder.AddDataContext();
 builder.AddCrossOrigin();

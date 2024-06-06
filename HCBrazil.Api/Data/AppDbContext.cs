@@ -1,9 +1,10 @@
 ﻿using HCBrazil.Core.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HCBrazil.Api.Data;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
     public DbSet<Attendee> Attendees { get; set; }
     public DbSet<Volunteer> Volunteers { get; set; }
