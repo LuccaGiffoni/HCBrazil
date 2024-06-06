@@ -1,0 +1,29 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider IsDarkMode="true"/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<MudLayout>
+    <MudAppBar>
+        Highland Camps | Brazil
+        <MudIconButton Icon="@Icons.TwoTone.Menu" OnClick="@ToggleLateralMenu"/>
+    </MudAppBar>
+    <MudDrawer Open="@_islateralMenuVisible">
+        <MudButton  Icon="@Icons.TwoTone.Close" OnClick="@ToggleLateralMenu"></MudButton>
+    </MudDrawer>
+    <MudMainContent>
+            @Body
+    </MudMainContent>
+</MudLayout>
+
+@code{
+
+    private bool _islateralMenuVisible = true;
+
+    private void ToggleLateralMenu()
+    { 
+        _islateralMenuVisible = !_islateralMenuVisible;
+    }
+
+}

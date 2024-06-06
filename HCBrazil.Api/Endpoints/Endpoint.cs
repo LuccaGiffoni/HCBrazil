@@ -17,7 +17,7 @@ public static class Endpoint
             .MapEndpoint<CreateAttendeeEndpoint>()
             .MapEndpoint<DeleteAttendeeEndpoint>()
             .MapEndpoint<GetAllAttendeesEndpoint>()
-            .MapEndpoint<GetAttendeeByIdEnpoint>()
+            .MapEndpoint<GetAttendeeByIdEndpoint>()
             .MapEndpoint<UpdateAttendeeEndpoint>();
     }
 

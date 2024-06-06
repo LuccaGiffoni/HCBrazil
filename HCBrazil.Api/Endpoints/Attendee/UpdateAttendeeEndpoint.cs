@@ -4,7 +4,7 @@ using HCBrazil.Core.Services;
 
 namespace HCBrazil.Api.Endpoints.Attendee;
 
-public class UpdateAttendeeEndpoint: IEndpoint
+public abstract class UpdateAttendeeEndpoint: IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
         => app.MapPut("/{id}", HandleAsync)
@@ -12,7 +12,15 @@ public class UpdateAttendeeEndpoint: IEndpoint
             .WithSummary("Update one attendee")
             .WithDescription("Update one attendee")
             .WithOrder(5)
-            .Produces<Response<Core.Models.Attendee?>>();
+            .Produces<Response<Core.Models.Attendee?>>()
+            .WithOpenApi(getAttendee =>
+            {
+                var attendeeId = getAttendee.Parameters[0];
+                attendeeId.Description = "The ID of the attendee to be updated";
+                
+                return getAttendee;
+            });
+    
     
     private static async Task<IResult> HandleAsync(IAttendeeService service,
         UpdateAttendeeRequest request, Guid id)
