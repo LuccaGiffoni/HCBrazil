@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
 using HCBrazil.Core.Common.Validators;
 
 namespace HCBrazil.Core.Requests.Attendees
@@ -25,7 +23,7 @@ namespace HCBrazil.Core.Requests.Attendees
         [StringLength(50, ErrorMessage = "Instagram handle cannot be longer than 50 characters.")]
         public string? Instagram { get; set; }
 
-        [RegularExpression(@"^\d{1,14}$", ErrorMessage = "RG must be numeric and up to 14 digits.")]
+        [StringLength(14, ErrorMessage = "RG must not have more than 14 digits.")]
         public string? RG { get; set; }
 
         [Required(ErrorMessage = "CPF is required.")]
@@ -52,8 +50,8 @@ namespace HCBrazil.Core.Requests.Attendees
         [StringLength(100, ErrorMessage = "Region cannot be longer than 100 characters.")]
         public string Region { get; set; } = null!;
 
-        [Required(ErrorMessage = "Postal Code is required.")]
-        [RegularExpression(@"^\d{5}\-\d{3}$", ErrorMessage = "Invalid Postal Code format. Use XXXXX-XXX.")]
+        [Required(ErrorMessage = "Postal code is required.")]
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "Invalid Postal Code's format. Postal Code must have 8 digits.")]
         public int PostalCode { get; set; }
 
         [Required(ErrorMessage = "Number is required.")]
@@ -102,11 +100,11 @@ namespace HCBrazil.Core.Requests.Attendees
         [Required(ErrorMessage = "Guardian's region is required.")]
         [StringLength(100, ErrorMessage = "Guardian's region cannot be longer than 100 characters.")]
         public string GuardianRegion { get; set; } = null!;
-
+        
         [Required(ErrorMessage = "Guardian's postal code is required.")]
-        [RegularExpression(@"^\d{5}\-\d{3}$", ErrorMessage = "Invalid Guardian's Postal Code format. Use XXXXX-XXX.")]
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "Invalid Guardian's Postal Code format. Postal Code must have 8 digits.")]
         public int GuardianPostalCode { get; set; }
-
+        
         [Required(ErrorMessage = "Guardian's number is required.")]
         [Range(1, int.MaxValue, ErrorMessage = "Guardian's number must be a positive integer.")]
         public int GuardianNumber { get; set; }

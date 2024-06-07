@@ -16,5 +16,6 @@ builder.Services.AddHttpClient(WebSettings.HttpClientName,
     options => { options.BaseAddress = new Uri(Settings.BackendUrl); });
 
 builder.Services.AddTransient<IAttendeeService, AttendeeService>();
+builder.Services.AddTransient<IViaCepService, ViaCepService>();
 
 await builder.Build().RunAsync();
