@@ -1,5 +1,6 @@
 using HCBrazil.Api.Common.Api;
 using HCBrazil.Api.Endpoints;
+using HCBrazil.Core;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
