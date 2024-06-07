@@ -1,0 +1,138 @@
+﻿@page "/participantes/criar"
+@inherits CreateAttendeePage
+
+<PageTitle>Criar participante</PageTitle>
+<MudText Typo="Typo.h4">Participante | Criar</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@Request" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+        
+        <MudGrid Spacing="3">
+            <MudItem xs="12" md="6">
+                <MudPaper Class="pa-4">
+                    <MudText Typo="Typo.h6">Informações do Participante</MudText>
+
+                    <MudTextField Label="Organização" HelperText="O ID da organização"
+                                  @bind-Value="Request.OrganizationId" For="@(() => Request.OrganizationId)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Primeiro Nome" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.FirstName" For="@(() => Request.FirstName)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Último Nome" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.LastName" For="@(() => Request.LastName)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Telefone" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.Phone" For="@(() => Request.Phone)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Instagram"
+                                  @bind-Value="Request.Instagram" For="@(() => Request.Instagram)"
+                                  Immediate="true" />
+
+                    <MudTextField Label="RG" HelperText="Formato: número de até 14 dígitos"
+                                  @bind-Value="Request.RG" For="@(() => Request.RG)"
+                                  Immediate="true" />
+
+                    <MudTextField Label="CPF" HelperText="*Campo obrigatório | Formato: XXX.XXX.XXX-XX"
+                                  @bind-Value="Request.CPF" For="@(() => Request.CPF)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="País" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.Country" For="@(() => Request.Country)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Estado" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.State" For="@(() => Request.State)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Cidade" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.City" For="@(() => Request.City)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Rua" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.Street" For="@(() => Request.Street)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Região" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.Region" For="@(() => Request.Region)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="CEP" HelperText="*Campo obrigatório | Formato: XXXXX-XXX"
+                                  @bind-Value="Request.PostalCode" For="@(() => Request.PostalCode)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Número" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.Number" For="@(() => Request.Number)"
+                                  Immediate="true" Required="true" />
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudPaper Class="pa-4">
+                    <MudText Typo="Typo.h6">Informações do Guardião</MudText>
+
+                    <MudTextField Label="Primeiro Nome do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianFirstName" For="@(() => Request.GuardianFirstName)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Último Nome do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianLastName" For="@(() => Request.GuardianLastName)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Telefone do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianPhone" For="@(() => Request.GuardianPhone)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Email do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianEmail" For="@(() => Request.GuardianEmail)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="RG do Guardião" HelperText="Formato: número de até 14 dígitos"
+                                  @bind-Value="Request.GuardianRG" For="@(() => Request.GuardianRG)"
+                                  Immediate="true" />
+
+                    <MudTextField Label="CPF do Guardião" HelperText="*Campo obrigatório | Formato: XXX.XXX.XXX-XX"
+                                  @bind-Value="Request.GuardianCPF" For="@(() => Request.GuardianCPF)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="País do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianCountry" For="@(() => Request.GuardianCountry)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Estado do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianState" For="@(() => Request.GuardianState)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Cidade do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianCity" For="@(() => Request.GuardianCity)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Rua do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianStreet" For="@(() => Request.GuardianStreet)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Região do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianRegion" For="@(() => Request.GuardianRegion)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="CEP do Guardião" HelperText="*Campo obrigatório | Formato: XXXXX-XXX"
+                                  @bind-Value="Request.GuardianPostalCode" For="@(() => Request.GuardianPostalCode)"
+                                  Immediate="true" Required="true" />
+
+                    <MudTextField Label="Número do Guardião" HelperText="*Campo obrigatório"
+                                  @bind-Value="Request.GuardianNumber" For="@(() => Request.GuardianNumber)"
+                                  Immediate="true" Required="true" />
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled"
+                           Color="Color.Primary"Class="mt-4">Criar novo participante</MudButton>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+</MudPaper>
